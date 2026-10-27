@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    @apply bg-slate-50 text-slate-900 antialiased font-sans;
+  }
+}
+
+/* Custom scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Highlight styling for reviewed text */
+.highlight-high {
+  background-color: #fee2e2;
+  border-bottom: 2px solid #ef4444;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.highlight-high:hover, .highlight-high.active {
+  background-color: #fca5a5;
+}
+
+.highlight-medium {
+  background-color: #fef3c7;
+  border-bottom: 2px solid #f59e0b;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.highlight-medium:hover, .highlight-medium.active {
+  background-color: #fde68a;
+}
+
+.highlight-low {
+  background-color: #e0f2fe;
+  border-bottom: 2px solid #0284c7;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+.highlight-low:hover, .highlight-low.active {
+  background-color: #bae6fd;
+}

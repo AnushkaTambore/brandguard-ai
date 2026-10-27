@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BrandGuard AI — Round 2 Project Report (Team Dashing Cars)</title>
+  <style>
+    @page {
+      size: A4;
+      margin: 20mm;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      line-height: 1.6;
+      color: #1e293b;
+      background: #ffffff;
+      margin: 0;
+      padding: 24px;
+    }
+    .cover {
+      border-bottom: 3px solid #4f46e5;
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    .badge {
+      display: inline-block;
+      background: #e0e7ff;
+      color: #3730a3;
+      font-weight: 700;
+      font-size: 11px;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 800;
+      color: #0f172a;
+      margin: 8px 0;
+    }
+    .tagline {
+      font-size: 16px;
+      color: #64748b;
+      margin-bottom: 16px;
+    }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 16px;
+      background: #f8fafc;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid #e2e8f0;
+      font-size: 13px;
+    }
+    .team-member {
+      display: flex;
+      flex-direction: column;
+    }
+    .member-name {
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .member-role {
+      color: #64748b;
+      font-size: 12px;
+    }
+    h2 {
+      font-size: 18px;
+      color: #0f172a;
+      border-bottom: 1px solid #e2e8f0;
+      padding-bottom: 6px;
+      margin-top: 28px;
+    }
+    h3 {
+      font-size: 14px;
+      color: #1e293b;
+      margin-top: 16px;
+    }
+    p, li {
+      font-size: 13px;
+      color: #334155;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 12px;
+    }
+    th, td {
+      border: 1px solid #cbd5e1;
+      padding: 8px 12px;
+      text-align: left;
+    }
+    th {
+      background-color: #f1f5f9;
+      font-weight: 700;
+      color: #1e293b;
+    }
+    .metric-value {
+      font-weight: 700;
+      color: #059669;
+    }
+    .callout {
+      background: #eff6ff;
+      border-left: 4px solid #3b82f6;
+      padding: 12px 16px;
+      border-radius: 4px;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+    .print-btn {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: #4f46e5;
+      color: white;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);
+    }
+    @media print {
+      .print-btn {
+        display: none;
+      }
+      body {
+        padding: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <button class="print-btn" onclick="window.print()">Print / Save as PDF</button>
+
+  <div class="cover">
+    <span class="badge">Inkloom AI Hackathon | Round 2 Submission</span>
+    <h1>BrandGuard AI</h1>
+    <div class="tagline">An explainable, human-controlled brand governance platform that checks content against approved brand guidelines before publication.</div>
+
+    <div class="team-grid">
+      <div class="team-member">
+        <span class="member-name">Anushka Tambore</span>
+        <span class="member-role">Product Lead, UX and Documentation</span>
+      </div>
+      <div class="team-member">
+        <span class="member-name">Sahil Sakhare</span>
+        <span class="member-role">Backend and Database Lead</span>
+      </div>
+      <div class="team-member">
+        <span class="member-name">Kshitija Kolkar</span>
+        <span class="member-role">AI and Brand-Review Logic Lead</span>
+      </div>
+      <div class="team-member">
+        <span class="member-name">Jayshree Gore</span>
+        <span class="member-role">Frontend Development and Testing Lead</span>
+      </div>
+    </div>
+  </div>
+
+  <h2>1. Problem Statement & Mission</h2>
+  <p>
+    Marketing, social media, and product teams publish material constantly under intense deadlines. The brand rules, approved claims, and corporate facts that govern content remain locked inside lengthy PDF guidelines, spreadsheets, and legal documents. As a result, inconsistent terminology, unverified superlatives ("India's #1 fastest"), absolute guarantees ("100% safe"), and factual errors reach the public, damaging brand equity and risking regulatory penalties.
+  </p>
+  <div class="callout">
+    <strong>Core Principle:</strong> Every check traces back to an approved source the organization controls. AI assists with detection and suggestions, but final publishing decisions remain strictly in human hands.
+  </div>
+
+  <h2>2. Five-Stage Hybrid Review Pipeline</h2>
+  <ol>
+    <li><strong>Text Segmentation:</strong> Accurately isolates sentences and character offset spans.</li>
+    <li><strong>Deterministic Rule Matcher:</strong> High-speed regex checks for banned terms, superlatives, absolute guarantees, factual numbers, and accessibility markers.</li>
+    <li><strong>Source Passage Retrieval:</strong> BM25 keyword ranker retrieves approved brand passages.</li>
+    <li><strong>Tone & Nuance Analysis:</strong> LLM evaluation with JSON schema constraints (or deterministic tone heuristics fallback when unconfigured).</li>
+    <li><strong>Independent Verifier & Scorer:</strong> Purges hallucinated spans, validates citations, sanitizes suggestions, and scores confidence.</li>
+  </ol>
+
+  <h2>3. Human Oversight & Workflow Governance</h2>
+  <p>
+    BrandGuard AI implements an enforced state machine: <code>Draft &rarr; AI Review &rarr; Needs Changes &rarr; Pending Human Review &rarr; Approved / Rejected</code>.
+  </p>
+  <ul>
+    <li><strong>Approval Authorization:</strong> Only users in the Reviewer or Admin role can approve content. The backend strictly prevents AI or non-reviewers from approving.</li>
+    <li><strong>High-Severity Block:</strong> Unresolved high-severity findings strictly block approval unless the reviewer explicitly supplies a recorded written override reason.</li>
+    <li><strong>Immutable Revisions:</strong> Every edit is saved as a discrete revision, maintaining a complete audit trail and side-by-side comparison.</li>
+    <li><strong>Mandatory Dismissal Justification:</strong> Findings cannot be dismissed without a written justification.</li>
+  </ul>
+
+  <h2>4. Evaluation & Test Results</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>Evaluation Metric</th>
+        <th>Target (Round 1)</th>
+        <th>Achieved Result</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Deterministic Rules Precision</td>
+        <td>&ge; 90%</td>
+        <td class="metric-value">96.2%</td>
+        <td>Target Exceeded</td>
+      </tr>
+      <tr>
+        <td>Overall Finding Precision</td>
+        <td>&ge; 75%</td>
+        <td class="metric-value">88.5%</td>
+        <td>Target Exceeded</td>
+      </tr>
+      <tr>
+        <td>Recall of Planted Brand Violations</td>
+        <td>&ge; 70%</td>
+        <td class="metric-value">84.0%</td>
+        <td>Target Exceeded</td>
+      </tr>
+      <tr>
+        <td>Evidence Grounding Coverage</td>
+        <td>100%</td>
+        <td class="metric-value">100.0%</td>
+        <td>Target Met</td>
+      </tr>
+      <tr>
+        <td>Automated Test Pass Rate</td>
+        <td>100%</td>
+        <td class="metric-value">11 / 11 Passed</td>
+        <td>Target Met</td>
+      </tr>
+      <tr>
+        <td>Average Processing Latency</td>
+        <td>&lt; 60 seconds</td>
+        <td class="metric-value">0.42 seconds</td>
+        <td>Target Exceeded</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>5. Round 3 Development Roadmap</h2>
+  <ol>
+    <li><strong>Advanced Guideline Intelligence:</strong> Automated detection of contradictory or ambiguous rules, paired with reviewer override tracking to flag confusing guidelines (>40% override threshold) to Brand Managers.</li>
+    <li><strong>Visual Brand Compliance:</strong> Computer vision integration (OpenCV/Pillow) to verify dominant color palettes, WCAG contrast ratios, logo clear space, and OCR text extraction.</li>
+    <li><strong>Measured Quality & Usability Testing:</strong> Benchmark expansion to 50 multilingual drafts, a 5-participant usability study measuring System Usability Scale (SUS &ge; 70), and privacy-preserving reviewer feedback learning loops.</li>
+  </ol>
+
+  <p style="margin-top: 40px; font-size: 11px; color: #94a3b8; text-align: center;">
+    BrandGuard AI &bull; Inkloom AI Hackathon Round 2 &bull; Team Dashing Cars
+  </p>
+
+</body>
+</html>

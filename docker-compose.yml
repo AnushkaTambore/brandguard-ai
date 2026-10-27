@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  brandguard-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: brandguard_app
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=sqlite:///./brandguard.db
+      - SECRET_KEY=brandguard-hackathon-2026-secret-key
+      - AI_API_KEY=
+      - AI_MODEL=gpt-4o-mini
+    volumes:
+      - ./data:/app/backend/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/api/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
