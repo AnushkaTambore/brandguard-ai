@@ -1,6 +1,6 @@
 import os
 from contextlib import asynccontextmanager
-from fastapi import FastAPI, Depends
+from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
 from fastapi.responses import FileResponse
@@ -31,7 +31,7 @@ app = FastAPI(
     lifespan=lifespan
 )
 
-# Enable CORS for development
+# Enable CORS for development and cross-origin deployments
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -60,13 +60,24 @@ def trigger_demo_seed(db: Session = Depends(get_db)):
 # Serve Frontend static assets if built
 frontend_dist_path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "frontend", "dist"))
 if os.path.exists(frontend_dist_path):
-    app.mount("/assets", StaticFiles(directory=os.path.join(frontend_dist_path, "assets")), name="assets")
+    assets_dir = os.path.join(frontend_dist_path, "assets")
+    if os.path.exists(assets_dir):
+        app.mount("/assets", StaticFiles(directory=assets_dir), name="assets")
 
     @app.get("/{full_path:path}")
     def serve_spa(full_path: str):
-        # Don't intercept API routes
-        if full_path.startswith("api/") or full_path.startswith("docs") or full_path.startswith("openapi.json"):
-            return None
+        # Do not intercept API, docs, or OpenAPI routes
+        clean_path = full_path.lstrip("/")
+        if clean_path.startswith("api") or clean_path in ["docs", "redoc", "openapi.json"]:
+            raise HTTPException(status_code=404, detail=f"Endpoint '/{clean_path}' not found")
+
+        # Serve static file if it exists in dist (e.g. favicon.svg, icons.svg)
+        if clean_path:
+            file_path = os.path.join(frontend_dist_path, clean_path)
+            if os.path.isfile(file_path):
+                return FileResponse(file_path)
+
+        # Fallback to index.html for client-side routing
         index_file = os.path.join(frontend_dist_path, "index.html")
         if os.path.exists(index_file):
             return FileResponse(index_file)

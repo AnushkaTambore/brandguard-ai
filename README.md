@@ -9,6 +9,7 @@
 [![React 19](https://img.shields.io/badge/React-19.3.1-61DAFB.svg)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6.svg)](https://www.typescriptlang.org/)
 [![Tests](https://img.shields.io/badge/Tests-11%20Passed-brightgreen.svg)]()
+[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/AnushkaTambore/brandguard-ai)
 
 ---
 

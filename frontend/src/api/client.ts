@@ -28,7 +28,10 @@ export const setDemoRole = (role: DemoRole, name?: string) => {
 export const getDemoRole = () => currentRole;
 export const getDemoUserName = () => currentUserName;
 
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || '').replace(/\/$/, '');
+
 const apiFetch = async (url: string, options: RequestInit = {}) => {
+  const fullUrl = url.startsWith('/') ? `${API_BASE}${url}` : `${API_BASE}/${url}`;
   const headers = new Headers(options.headers || {});
   headers.set('X-User-Role', currentRole);
   headers.set('X-User-Name', currentUserName);
@@ -36,7 +39,7 @@ const apiFetch = async (url: string, options: RequestInit = {}) => {
     headers.set('Content-Type', 'application/json');
   }
 
-  const response = await fetch(url, {
+  const response = await fetch(fullUrl, {
     ...options,
     headers
   });
