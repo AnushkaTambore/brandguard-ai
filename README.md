@@ -9,7 +9,7 @@
 [![React 19](https://img.shields.io/badge/React-19.3.1-61DAFB.svg)](https://react.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6.svg)](https://www.typescriptlang.org/)
 [![Tests](https://img.shields.io/badge/Tests-11%20Passed-brightgreen.svg)]()
-[![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/AnushkaTambore/brandguard-ai)
+website-https://brandguard-ai-knu1.onrender.com
 
 ---
 
@@ -44,7 +44,7 @@ Unlike generic AI writing assistants that hallucinate facts or rewrite text in a
 
 ---
 
-## 3. Fast Start Guide (For Judges)
+## 3. Fast Start Guide 
 
 The application is pre-configured so that **no external API keys, accounts, or complex services are required**.
 
@@ -66,7 +66,7 @@ The application is pre-configured so that **no external API keys, accounts, or c
    ```
 
 3. **Open the Web Application**:
-   Navigate to [http://127.0.0.1:8000](http://127.0.0.1:8000) in your browser. The single command serves both the REST API and the compiled React SPA.
+   Navigate to (https://brandguard-ai-knu1.onrender.com) in your browser. The single command serves both the REST API and the compiled React SPA.
 
 ---
 
@@ -86,7 +86,7 @@ If you wish to run the React Vite development server alongside FastAPI:
    npm install
    npm run dev
    ```
-   Open [http://localhost:5173](http://localhost:5173). The Vite dev server automatically proxies `/api` requests to `http://127.0.0.1:8000`.
+   Open(https://brandguard-ai-knu1.onrender.com) The Vite dev server automatically proxies `/api` requests to `http://127.0.0.1:8000`.
 
 ---
 
@@ -96,7 +96,7 @@ If you wish to run the React Vite development server alongside FastAPI:
 cd brandguard-ai
 docker-compose up --build
 ```
-Navigate to [http://localhost:8000](http://localhost:8000).
+Navigate to https://brandguard-ai-knu1.onrender.com
 
 ---
 
@@ -104,7 +104,7 @@ Navigate to [http://localhost:8000](http://localhost:8000).
 
 To experience the complete end-to-end workflow in under 3 minutes:
 
-1. **Open the Application**: Go to [http://127.0.0.1:8000](http://127.0.0.1:8000). The dashboard immediately loads with pre-seeded metrics for the fictional brand *"Acme Courier"*.
+1. **Open the Application**: Go to https://brandguard-ai-knu1.onrender.com The dashboard immediately loads with pre-seeded metrics for the fictional brand *"Acme Courier"*.
 2. **Explore Brand Kit**: Click **Brand Kit & Rules** in the sidebar. Inspect the 4 source documents (Brand Guidelines, Claims Register, Fact Sheet, Accessibility Standards) and the active review rules.
 3. **One-Click Demo Review**: Return to the **Dashboard** and click **"Test Sample Launch Post (1-Click Review)"**, or go to **Review Content** and select *"Social Post: Festival Launch Announcement"*.
 4. **Trigger Review Pipeline**: Click **"Run Governance Review"**. In under 0.5s, the engine segments the copy, detects 5 distinct violations across categories, verifies citations, and highlights flagged spans in the left pane.
