@@ -22,6 +22,9 @@ yarn-error.log*
 # IDE
 .vscode/
 .idea/
+# Scratch files
+main.py
+scratch/
 *.swp
 *.swo
 
